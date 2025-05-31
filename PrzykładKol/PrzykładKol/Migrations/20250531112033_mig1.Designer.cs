@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PrzykładKol.Properties.Data;
@@ -11,9 +12,11 @@ using PrzykładKol.Properties.Data;
 namespace PrzykładKol.Migrations
 {
     [DbContext(typeof(Database))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20250531112033_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -285,7 +288,7 @@ namespace PrzykładKol.Migrations
             modelBuilder.Entity("PrzykładKol.Properties.Models.Product_Order", b =>
                 {
                     b.HasOne("PrzykładKol.Properties.Models.Order", "Order")
-                        .WithMany("ProductOrders")
+                        .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -304,11 +307,6 @@ namespace PrzykładKol.Migrations
             modelBuilder.Entity("PrzykładKol.Properties.Models.Client", b =>
                 {
                     b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("PrzykładKol.Properties.Models.Order", b =>
-                {
-                    b.Navigation("ProductOrders");
                 });
 
             modelBuilder.Entity("PrzykładKol.Properties.Models.Product", b =>

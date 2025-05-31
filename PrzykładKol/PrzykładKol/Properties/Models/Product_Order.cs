@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace PrzykładKol.Properties.Models;
 
 
-[PrimaryKey(nameof(ProductId),nameof(OrderId))]
+// [PrimaryKey(nameof(ProductId),nameof(OrderId))]
 public class Product_Order
 {
     

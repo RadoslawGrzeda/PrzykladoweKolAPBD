@@ -7,11 +7,8 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-builder.Services.AddDbContext<Database>(o =>
-    {
-        o.UseSqlServer(connectionString);
-    }
-);
+builder.Services.AddDbContext<Database>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 var app = builder.Build();
@@ -32,4 +29,4 @@ app.MapControllers();
 app.Run();
 
 
-//builder.Services.AddScoped<IDbService, DbService>();
+
