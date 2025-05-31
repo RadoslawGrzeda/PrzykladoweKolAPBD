@@ -24,13 +24,13 @@ public class Database : DbContext
         modelBuilder.Entity<Product_Order>(a =>
         {
             a.HasKey(x => new { x.ProductId, x.OrderId });
-            
-            a.HasOne(po=>po.Product)
-                .WithMany(p=>p.ProductOrders)
+
+            a.HasOne(po => po.Product)
+                .WithMany(p => p.ProductOrders)
                 .HasForeignKey(po => po.ProductId);
-            
-            a.HasOne(po=>po.Order)
-                .WithMany(p=>p.ProductOrders)
+
+            a.HasOne(po => po.Order)
+                .WithMany(p => p.ProductOrders)
                 .HasForeignKey(po => po.OrderId);
         });
 
@@ -38,28 +38,28 @@ public class Database : DbContext
         modelBuilder.Entity<Product>(a =>
             a.Property(x => x.Price).HasColumnType("numeric(10,2)")
         );
-       
-        modelBuilder.Entity<Client>().HasData(new List<Client>()
+
+        /*modelBuilder.Entity<Client>().HasData(new List<Client>()
         {
             new Client() { ID = 1, FirstName = "John", LastName = "Doe" },
             new Client() { ID = 2, FirstName = "Jane", LastName = "Doe" },
             new Client() { ID = 3, FirstName = "Julie", LastName = "Doe" },
         });
-        
+
         modelBuilder.Entity<Status>().HasData(new List<Status>()
         {
             new Status() { ID = 1, Name = "Created" },
             new Status() { ID = 2, Name = "Ongoing" },
             new Status() { ID = 3, Name = "Completed" },
         });
-        
+
         modelBuilder.Entity<Product>().HasData(new List<Product>()
         {
             new Product() { ID = 1, Name = "Apple", Price = 3.45 },
             new Product() { ID = 2, Name = "Bananas", Price = 5.55 },
             new Product() { ID = 3, Name = "Orange", Price = 12.37 },
         });
-        
+
         modelBuilder.Entity<Order>().HasData(new List<Order>()
         {
             new Order()
@@ -95,7 +95,7 @@ public class Database : DbContext
                 StatusId = 1
             }
         });
-        
+
         modelBuilder.Entity<Product_Order>().HasData(new List<Product_Order>()
         {
             new Product_Order() { ProductId = 1, OrderId = 1, Amount = 3},
@@ -106,6 +106,7 @@ public class Database : DbContext
             new Product_Order() { ProductId = 3, OrderId = 3, Amount = 8},
             new Product_Order() { ProductId = 1, OrderId = 3, Amount = 12},
         });
+    }*/
     }
 }
 
